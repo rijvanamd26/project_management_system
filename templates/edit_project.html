@@ -1,19 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit project</title>
-</head>
-<body>
-    <form action="/edit_project/{{project.0}}" method="POST">
-        <input type="text" name="project_title" id="" value="{{project.1}}"><br><br>
-        <input type="date" name="start_date" id="" value="{{project.2}}"><br><br>
-        <input type="date" name="end_date" id="" value="{{project.3}}"><br><br>
-        <input type="text" name="description" id="" value="{{project.4}}"><br><br>
-        <input type="url" name="link" id="" value="{{project.5}}"><br><br>
-        <!--screen recording-->
-        <input type="submit" value="Edit project">
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container h-100">
+    <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-lg-9 col-xl-7">
+            <div class="card" style="width: 47rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Add Project</h5>
+                    <p class="card-text">
+                    <form class="row g-3" action="/edit_project/{{project.0}}" method="post" enctype="multipart/form-data">
+                        
+                        <div class="col-md-12">
+                            <label for="project_title" class="form-label">Project title</label>
+                            <input type="text" class="form-control" id="project_title"
+                                placeholder="Enter Project title" name="project_title" value="{{project.1}}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="start_date" class="form-label">Start date</label>
+                            <input type="date" class="form-control" id="start_date"
+                                placeholder="Enter start date" name="start_date" value="{{project.2}}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="end_date" class="form-label">End date</label>
+                            <input class="form-control" type="date" id="end_date" name="end_date" value="{{project.3}}" placeholder="Enter end date" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="description" class="form-label">Project description</label>
+                            <textarea class="form-control" rows="10" cols="10" id="city" name="description" placeholder="Enter project description" required>{{project.4}}</textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="link" class="form-label">Project link</label>
+                            <input class="form-control" type="url" id="link" name="link" value="{{project.5}}" placeholder="Enter project link" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="file" class="form-label">Screen recording</label>
+                            <input class="form-control" type="file" id="file" name="file">
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-dark">Edit Project</button>
+                        </div>
+                    </form>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
